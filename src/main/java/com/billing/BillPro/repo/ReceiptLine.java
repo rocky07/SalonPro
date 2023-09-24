@@ -1,5 +1,6 @@
 package com.billing.BillPro.repo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 public class ReceiptLine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     @Column(name="receipt_line_id")
     private int id;
     private String service;
     private String serviceCost;

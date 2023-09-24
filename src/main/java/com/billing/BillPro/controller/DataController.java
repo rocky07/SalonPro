@@ -1,13 +1,11 @@
 package com.billing.BillPro.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.billing.BillPro.repo.Receipt;
@@ -38,6 +36,7 @@ public class DataController {
     }
 
     @PostMapping("/receipt") // Added the request mapping URL
+    //@PreAuthorize("hasRole('USER')")
     public void addReceipt(@RequestBody Receipt receipt) { // Added @RequestBody annotation
         receiptRepo.save(receipt);
     }
