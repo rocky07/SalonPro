@@ -9,15 +9,4 @@ class ViewController {
     public String home(){
         return "index.html";
     }
-
-    @GetMapping("/admin")
-    public String adminHome(){
-        return "index.html";
-    }
-
-    @GetMapping("/login")
-    public String showCustomLoginPage() {
-        return "login.html"; // Return the name of your custom login page template
-    }
-
 }

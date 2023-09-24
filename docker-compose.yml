@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root-password
+      MYSQL_DATABASE: salonpro
+      MYSQL_USER: salonuser
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  spring-boot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: BillPro
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/salonpro
+      SPRING_DATASOURCE_USERNAME: salonuser
+      SPRING_DATASOURCE_PASSWORD: password
+
+volumes:
+  mysql-data:
